@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Environment Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag "bootstrap/css/bootstrap.min","index" %>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Environment Manager</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Environments</a></li>
+            <li><a href="#">Admin</a></li>
+          </ul>
+
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" id="search-vms" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div class="content">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">All</a></li>
+          <li><a href="#">Online</a></li>
+          <li><a href="#">Offline</a></li>
+          <li><a href="#">R9 VMs</a></li>
+          <li class="active"><a href="#">+</a></li>
+        </ul>
+        <div id="left" class="col-xs-12 col-sm-8">
+          <div id="table_container" >
+            <table class="table table-hover ">
+              <thead>
+                <tr>
+                  <th>Preview</th>
+                  <th>Name</th>
+                  <th>OS</th>
+                  <th>Owner</th>
+                  <th>IP address</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="preview_small"></div>
+                  </td>
+                  <td>R9CIR07-web1</td>
+                  <td>Windows 2008 Standard</td>
+                  <td>R9 dev team</td>
+                  <td>10.0.10.135</td>
+                  <td>Carrenza VM</td>
+                  <td>R9 CI webserver for Release07</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="preview_small">OFFLINE</div>
+                  </td>
+                  <td>R9CIR07-db1</td>
+                  <td>Windows 2008 Standard</td>
+                  <td>R9 dev team</td>
+                  <td>10.0.10.135</td>
+                  <td>Carrenza VM</td>
+                  <td>R9 CI webserver for Release07</td>
+                </tr>
+                <tr class="active">
+                  <td>
+                    <div class="preview_small"></div>
+                  </td>
+                  <td>tfsbuild</td>
+                  <td>Windows 2008 Enterprise</td>
+                  <td>Infrastructure</td>
+                  <td>10.0.10.37</td>
+                  <td>Physical</td>
+                  <td>Jenkins slave</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="preview_small"></div>
+                  </td>
+                  <td>testdata-app</td>
+                  <td>Windows 2008 Enterprise</td>
+                  <td>Tom Pallister</td>
+                  <td>20.0.10.4</td>
+                  <td>Carrenza VM</td>
+                  <td>All sorts of shizzle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="right" class="col-xs-12 col-sm-4">
+          <div id="preview_container" >
+            <div class="col-xs-12">
+               <%= image_tag "preview.png" , {class: "thumbnail col-xs-12", id: "preview"} %>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-group">
+                <a class="btn btn-default btn-primary"><span class="glyphicon glyphicon-refresh"></span>Restart</a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default btn-primary"><span class="glyphicon glyphicon-new-window"></span>Log in</a></li>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div style="height:10px"></div>
+            </div>
+            <div class="col-xs-12">
+              <ul class="list-group">            
+                <li class="list-group-item">Cpu clock speed: <b>3.2GHz</b></li>
+                <li class="list-group-item">Installed RAM: <b>4GB</b></li>
+                <li class="list-group-item">CPU usage: <b>43%</b></li>
+                <li class="list-group-item">RAM usage: <b>315MB</b></li>
+                <li class="list-group-item">CPU cores: <b>4</b> </li>
+              </ul>
+            </div>
+          </div>
+        </img>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <%= javascript_include_tag "bootstrap/js/bootstrap.min.js","main.js" %>
+</body>
+</html>
+
+

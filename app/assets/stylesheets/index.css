@@ -1,0 +1,32 @@
+.preview_small{
+	background: black;
+	line-height:60px;
+    	height:60px;
+    	width:60px;
+    	vertical-align:middle;
+	color: lime;
+	font-size: 10px;
+	text-align: center;
+}
+
+#preview{
+	width:100%;
+	cursor:pointer;
+}
+
+#preview_container{
+	height:400px;
+}
+
+#table_container tbody {
+	cursor: pointer;
+}
+
+#table_container table {
+	min-height:60px;
+	font-size:12px;
+}
+
+.navbar-brand{
+	color: white !important;
+}
