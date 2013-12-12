@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
 
-def index
 
+def index
+  @Vms = Vm.all
 end
 
 end

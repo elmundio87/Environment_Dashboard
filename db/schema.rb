@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20131212145700) do
   create_table "vms", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "os"
+    t.string   "owner"
+    t.string   "ip_address"
+    t.string   "host_type"
+    t.string   "description"
   end
 
 end

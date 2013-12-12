@@ -63,50 +63,20 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class="preview_small"></div>
-                  </td>
-                  <td>R9CIR07-web1</td>
-                  <td>Windows 2008 Standard</td>
-                  <td>R9 dev team</td>
-                  <td>10.0.10.135</td>
-                  <td>Carrenza VM</td>
-                  <td>R9 CI webserver for Release07</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="preview_small">OFFLINE</div>
-                  </td>
-                  <td>R9CIR07-db1</td>
-                  <td>Windows 2008 Standard</td>
-                  <td>R9 dev team</td>
-                  <td>10.0.10.135</td>
-                  <td>Carrenza VM</td>
-                  <td>R9 CI webserver for Release07</td>
-                </tr>
-                <tr class="active">
-                  <td>
-                    <div class="preview_small"></div>
-                  </td>
-                  <td>tfsbuild</td>
-                  <td>Windows 2008 Enterprise</td>
-                  <td>Infrastructure</td>
-                  <td>10.0.10.37</td>
-                  <td>Physical</td>
-                  <td>Jenkins slave</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="preview_small"></div>
-                  </td>
-                  <td>testdata-app</td>
-                  <td>Windows 2008 Enterprise</td>
-                  <td>Tom Pallister</td>
-                  <td>20.0.10.4</td>
-                  <td>Carrenza VM</td>
-                  <td>All sorts of shizzle</td>
-                </tr>
+
+                <% @Vms.each do |vm| %>
+                  <tr>
+                    <td>
+                       <div class="preview_small"></div>
+                    </td>
+                    <td><%= vm.name %></td>
+                    <td><%= vm.os %></td>
+                    <td><%= vm.owner %></td>
+                    <td><%= vm.ip_address %></td>
+                    <td><%= vm.host_type %></td>
+                    <td><%= vm.description %></td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
           </div>
