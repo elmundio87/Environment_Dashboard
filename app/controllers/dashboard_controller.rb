@@ -22,7 +22,7 @@ def index
         vm = Hash.new
         vm["name"] = node_reloaded.chef_attributes.hostname
         vm["os"] = node_reloaded.chef_attributes.kernel.name
-        vm["owner"] = "???"
+        vm["owner"] =  node_reloaded.chef_attributes.owner
         vm["ip_address"] = node_reloaded.chef_attributes.ipaddress
         vm["host_type"] = "???"
         vm["description"] = "???"

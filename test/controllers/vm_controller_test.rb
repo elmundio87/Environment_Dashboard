@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class VmControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get stats" do
+    get :stats
+    assert_response :success
+  end
+
 end

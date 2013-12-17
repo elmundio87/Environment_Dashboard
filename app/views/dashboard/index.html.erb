@@ -62,7 +62,7 @@
                   <th>Description</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="nodes_table_body">
 
                 <% @Vms.each do |vm| %>
                   <tr>
@@ -98,12 +98,12 @@
               <div style="height:10px"></div>
             </div>
             <div class="col-xs-12">
-              <ul class="list-group">            
-                <li class="list-group-item">Cpu clock speed: <b>3.2GHz</b></li>
-                <li class="list-group-item">Installed RAM: <b>4GB</b></li>
-                <li class="list-group-item">CPU usage: <b>43%</b></li>
-                <li class="list-group-item">RAM usage: <b>315MB</b></li>
-                <li class="list-group-item">CPU cores: <b>4</b> </li>
+              <ul class="list-group" id="stats_group">
+                <li class="list-group-item">Cpu clock speed: <b><span id="stats_group_cpu_speed">3.2GHz</span></b></li>
+                <li class="list-group-item">Installed RAM: <b><span id="stats_group_memory">4GB</span></b></li>
+                <li class="list-group-item">CPU usage: <b>??%</b></li>
+                <li class="list-group-item">RAM usage: <b>??MB</b></li>
+                <li class="list-group-item">CPU cores: <b><span id="stats_group_cpu_cores">4</span></b> </li>
               </ul>
             </div>
           </div>
