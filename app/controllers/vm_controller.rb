@@ -14,4 +14,31 @@ class VmController < ApplicationController
 
     render :xml => vm
   end
+
+  def roster
+
+     ridley = RidleySingleton.instance.getConnection();
+
+        vms = Array.new
+
+        (ridley.node.all).each do |node|
+
+            hostname = node.chef_attributes.hostname
+
+            node_reloaded = node.reload
+
+            vm = Hash.new
+            vm["name"] = node_reloaded.chef_attributes.hostname
+            vm["os"] = node_reloaded.chef_attributes.kernel.name
+            vm["owner"] =  node_reloaded.chef_attributes.owner
+            vm["ip_address"] = node_reloaded.chef_attributes.ipaddress
+            vm["host_type"] = "???"
+            vm["description"] = "???"
+            vms << vm
+
+        end
+
+
+      render :xml => vms
+    end
 end
