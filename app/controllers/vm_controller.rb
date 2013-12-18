@@ -1,13 +1,7 @@
 class VmController < ApplicationController
   def stats
 
-      ridley = Ridley.new(
-        server_url: "https://api.opscode.com/organizations/elmundio87",
-        client_name: "elmundio87-validator",
-        client_key: "/Users/edmundd/.chef/elmundio87-validator.pem"
-      )
-
-
+        ridley = RidleySingleton.instance.getConnection();
 
         node_reloaded = ridley.node.all[0].reload.chef_attributes
 
