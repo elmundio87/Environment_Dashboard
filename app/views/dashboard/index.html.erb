@@ -50,7 +50,7 @@
         </ul>
         <div id="left" class="col-xs-12 col-sm-8">
           <div id="table_container" >
-            <table class="table table-hover ">
+            <table id="nodes_table" class="table table-hover ">
               <thead>
                 <tr>
                   <th>Preview</th>
@@ -63,20 +63,17 @@
                 </tr>
               </thead>
               <tbody id="nodes_table_body">
-
-                <% @Vms.each do |vm| %>
                   <tr>
                     <td>
                        <div class="preview_small"></div>
                     </td>
-                    <td><%= vm["name"] %></td>
-                    <td><%= vm["os"] %></td>
-                    <td><%= vm["owner"] %></td>
-                    <td><%= vm["ip_address"] %></td>
-                    <td><%= vm["host_type"] %></td>
-                    <td><%= vm["description"] %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
-                <% end %>
               </tbody>
             </table>
           </div>
