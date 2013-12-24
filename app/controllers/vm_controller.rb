@@ -23,15 +23,19 @@ class VmController < ApplicationController
 
         (ridley.node.all).each do |node|
 
-            hostname = node.chef_attributes.hostname
-
-            node_reloaded = node.reload
+            node_reloaded = node.reload.chef_attributes
 
             vm = Hash.new
-            vm["name"] = node_reloaded.chef_attributes.hostname
-            vm["os"] = node_reloaded.chef_attributes.kernel.name
-            vm["owner"] =  node_reloaded.chef_attributes.owner
-            vm["ip_address"] = node_reloaded.chef_attributes.ipaddress
+            vm["name"] = node_reloaded["hostname"] || "???"
+
+                begin
+                     vm["os"] = node_reloaded["kernel"].name || "???"
+                rescue Exception=>e
+                     vm["os"] = "???"
+                end
+
+            vm["owner"] =  node_reloaded["owner"] || "???"
+            vm["ip_address"] = node_reloaded["ipaddress"] || "???"
             vm["host_type"] = "???"
             vm["description"] = "???"
             vms << vm
