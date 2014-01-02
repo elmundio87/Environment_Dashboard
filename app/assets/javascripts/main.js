@@ -40,11 +40,11 @@ $( document ).ready(function() {
                     $("#nodes_table").find('tbody').append(row);
 
                 });
-
+         
+                $("#preview").attr("src","/vm/screenshot?ipAddress=" + roster[0].ipAddress +"&req=" + (new Date).valueOf())
 
                 $("#nodes_table_body tr").click(function() {
 
-debugger;
                     var tableRow = this.rowIndex - 1 ;
 
                     console.log("Fetching stats...")
@@ -73,14 +73,19 @@ debugger;
 
 
                         });
+
+                      $("#preview").attr("src","/vm/screenshot?ipAddress=" + roster[tableRow].ipAddress + "&req=" + (new Date).valueOf())
                 });
 
+             
 
             });
+
+     
     };
 
-
     populateTable();
+  
 
 });
 
