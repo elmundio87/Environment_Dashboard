@@ -1,1 +1,1 @@
-bundle exec thin start --threaded
+rails server -e multithreaded
