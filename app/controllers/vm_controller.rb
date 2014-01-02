@@ -35,14 +35,36 @@ class VmController < ApplicationController
                 end
 
             vm["owner"] =  node_reloaded["owner"] || "???"
-            vm["ip_address"] = node_reloaded["ipaddress"] || "???"
-            vm["host_type"] = "???"
+            vm["ipAddress"] = node_reloaded["ipaddress"] || "???"
+            vm["hostType"] = "???"
             vm["description"] = "???"
+ 
+             begin
+                                vm["cpuSpeed"] = node_reloaded.cpu[0].mhz || "???"
+                rescue Exception=>e
+                                 vm["cpuSpeed"] = "???"
+                end
+
+
+                begin
+                     vm["cpuCores"] = node_reloaded.cpu[0].cores || "???"
+                rescue Exception=>e
+                       vm["cpuCores"]  = "???"
+                end
+
+                begin
+                    vm["ram"] = node_reloaded.kernel.os_info.total_visible_memory_size || "???"
+                rescue Exception=>e
+                     vm["ram"] = "???"
+                end
+
+            
+
             vms << vm
 
         end
 
 
-      render :xml => vms
+      render :json => vms
     end
 end

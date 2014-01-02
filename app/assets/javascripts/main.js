@@ -13,25 +13,28 @@ $( document ).ready(function() {
 
         $.ajax({
             url: "vm/roster",
-            dataType: "xml"
-        }).done(function (xml) {
+            dataType: "json"
+        }).done(function (roster) {
 
-                console.log(xml);
+
+
+                console.log(roster);
+
                 $("#nodes_table").find('tbody').html("");
 
-                $(xml).find('object').each(function(){
+                $(roster).each(function(index){
 
 
 
                     row = $('<tr>')
 
                     row.append($('<td>').append("<div class='preview_small'></div>"));
-                    row.append($('<td>').append($(this).find("name").text()));
-                    row.append($('<td>').append($(this).find("os").text()));
-                    row.append($('<td>').append($(this).find("owner").text()));
-                    row.append($('<td>').append($(this).find("ip-address").text()));
-                    row.append($('<td>').append($(this).find("host-type").text()));
-                    row.append($('<td>').append($(this).find("description").text()));
+                    row.append($('<td>').append(roster[index].name));
+                    row.append($('<td>').append(roster[index].os));
+                    row.append($('<td>').append(roster[index].owner));
+                    row.append($('<td>').append(roster[index].ipAddress));
+                    row.append($('<td>').append(roster[index].hostType));
+                    row.append($('<td>').append(roster[index].description));
 
 
                     $("#nodes_table").find('tbody').append(row);
@@ -40,25 +43,29 @@ $( document ).ready(function() {
 
 
                 $("#nodes_table_body tr").click(function() {
+
+debugger;
+                    var tableRow = this.rowIndex - 1 ;
+
                     console.log("Fetching stats...")
                     $("#stats_group_cpu_speed,#stats_group_cpu_cores,#stats_group_memory").html("Loading...")
                     $.ajax({
-                        url: "vm/stats",
-                        dataType: "xml"
-                    }).done(function(xml) {
+                        url: "vm/roster",
+                        dataType: "json"
+                    }).done(function(roster) {
 
                             $("#stats_group_cpu_speed").html(function(){
-                                    var speed = $(xml).find("cpu-speed")[0].textContent / 1000
-                                    return  Math.round(speed * 10)/10+ "GHz"
+                                    var speed = roster[tableRow].cpuSpeed / 1000
+                                    return Math.round(speed * 10)/10+ "GHz"
                                 }
                             );
 
                             $("#stats_group_cpu_cores").html(
-                                $(xml).find("cpu-cores")[0].textContent
+                                roster[tableRow].cpuCores
                             );
 
                             $("#stats_group_memory").html(function(){
-                                    var ram = $(xml).find("ram")[0].textContent / (1024 * 1024);
+                                    var ram = roster[tableRow].ram / (1024 * 1024);
                                     return Math.round(ram * 10)/10 + "GB"
                                 }
 
