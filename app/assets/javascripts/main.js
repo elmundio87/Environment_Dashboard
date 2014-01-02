@@ -1,3 +1,40 @@
+setPreviewPicture = function(ipAddress){
+
+    if(ipAddress == "???"){
+        $("#preview").attr("src","/assets/offline.png")
+    }
+    else
+    {
+        $("#preview").attr("src","")
+
+    var imageTimer = setTimeout(function () {
+        //image could not be loaded:
+        $("#preview").attr("src","/assets/offline.png")
+    }, 5000); //5 seconds
+
+    $("#preview").load(function (response, status, xhr) {
+        if (status == 'error') {
+            //image could not be loaded:
+            alert('failed to load image');
+
+        } else {
+            //image was loaded:
+            clearTimeout(imageTimer);
+            $("#preview").attr("src","/vm/screenshot?ipAddress=" + ipAddress + "&req=" + (new Date).valueOf())
+        }
+    });
+
+
+
+        a = function(){}
+
+        setTimeout(a, 1000);
+
+        
+    }
+
+}
+
 $("#search-vms").keyup(function() {
 	var rows = $("#table_container table").find("tr").hide();
 	var data = this.value.split(" ");
@@ -7,6 +44,19 @@ $("#search-vms").keyup(function() {
 });
 
 $( document ).ready(function() {
+
+ /*   var imageTimer = setTimeout(function () {
+        $("#preview").attr("src","/assets/offline.png")
+    }, 5000); //5 seconds
+
+    $("#preview").load(function (response, status, xhr) {
+        if (status == 'error') {
+            $("#preview").attr("src","/assets/offline.png")
+        } else {
+            clearTimeout(imageTimer);
+        }
+    });*/
+
 
     populateTable = function () {
         $("#nodes_table").find('tbody').html("Loading node data from Chef server...");
@@ -41,9 +91,11 @@ $( document ).ready(function() {
 
                 });
          
-                $("#preview").attr("src","/vm/screenshot?ipAddress=" + roster[0].ipAddress +"&req=" + (new Date).valueOf())
+                setPreviewPicture(roster[0].ipAddress);
 
                 $("#nodes_table_body tr").click(function() {
+
+                     $("#preview").attr("src","")
 
                     var tableRow = this.rowIndex - 1 ;
 
@@ -53,6 +105,8 @@ $( document ).ready(function() {
                         url: "vm/roster",
                         dataType: "json"
                     }).done(function(roster) {
+
+                            setPreviewPicture(roster[tableRow].ipAddress);
 
                             $("#stats_group_cpu_speed").html(function(){
                                     var speed = roster[tableRow].cpuSpeed / 1000
@@ -74,7 +128,7 @@ $( document ).ready(function() {
 
                         });
 
-                      $("#preview").attr("src","/vm/screenshot?ipAddress=" + roster[tableRow].ipAddress + "&req=" + (new Date).valueOf())
+                       
                 });
 
              

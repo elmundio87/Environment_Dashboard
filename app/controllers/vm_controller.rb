@@ -57,18 +57,27 @@ require 'RidleySingleton'
     end
 
     def screenshot
-        send_data get_screenshot(params[:ipAddress]), :type => 'image/png'
+
+
+       begin
+           Timeout::timeout(5){
+                screenshot  = get_screenshot(params[:ipAddress])
+                send_data screenshot, :type => 'image/png'
+           }
+         rescue Timeout::Error
+          redirect_to "/assets/offline.png"
+         end
     end
 
  def get_screenshot(ip)
   
-        require "net/http"
-        require "uri"
+        require 'open-uri'
+         require 'timeout'
 
-        uri = URI.parse("http://#{ip}:8151/screenshot.png")
-        # Full
-        http = Net::HTTP.new(uri.host, uri.port)
-        return http.request(Net::HTTP::Get.new(uri.request_uri)).body
+
+        open("http://#{ip}:8151/screenshot.png", :read_timeout => 5) do |file|
+            return file.read
+        end
 
    end 
 
