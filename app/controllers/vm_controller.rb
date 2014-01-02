@@ -67,4 +67,22 @@ class VmController < ApplicationController
 
       render :json => vms
     end
+
+    def screenshot
+        send_data get_screenshot("127.0.0.1"), :type => 'image/png'
+    end
+
+ def get_screenshot(ip)
+  
+        require "net/http"
+        require "uri"
+
+        uri = URI.parse("http://#{ip}:8151/screenshot.png")
+        # Full
+        http = Net::HTTP.new(uri.host, uri.port)
+        return http.request(Net::HTTP::Get.new(uri.request_uri)).body
+
+   end 
+
+
 end
