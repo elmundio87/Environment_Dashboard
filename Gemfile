@@ -46,3 +46,6 @@ end
 
 # Use for chef API calls
 gem 'ridley'
+
+#Multithreaded app server to handle concurrent requests
+gem 'thin'
