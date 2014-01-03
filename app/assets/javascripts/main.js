@@ -23,8 +23,12 @@ $( document ).ready(function() {
 
     roster = {};
 
+    roster.clear = function(){
+        localStorage.removeItem("roster");
+    };
+
     roster.getRosterFromCache = function(){
-        return JSON.parse(localStorage.getItem("roster"));
+        return JSON.parse(localStorage.getItem("roster"))
     };
 
     roster.timeRemaining = function(){
@@ -42,10 +46,19 @@ $( document ).ready(function() {
 
     };
 
-    roster.getRoster = function(){
+    roster.getRoster = function(a){
         var configuration = roster.getRosterFromCache();
+        var async = (arguments[0]) ? arguments[0] : true ;
 
-        if(roster.isExpired(configuration)){
+        if (typeof a === 'undefined') {
+            optionalArg = true;
+        }
+
+        if(!a){
+            $.blockUI();
+        }
+
+        if(roster.isExpired()){
             $.ajax({
                 url: "vm/roster",
                 dataType: "json"
@@ -54,6 +67,8 @@ $( document ).ready(function() {
                     var expirationMS = expirationMin * 60 * 1000;
                     configuration = {value: JSON.stringify(json), timestamp: new Date().getTime() + expirationMS}
                     localStorage.setItem("roster", JSON.stringify(configuration));
+                    populateTable(roster.getRosterFromCache());
+                    $.unblockUI();
                 });
         }
 
@@ -61,40 +76,33 @@ $( document ).ready(function() {
     };
 
 
-        populateTable = function () {
+        populateTable = function (roster) {
         $("#nodes_table").find('tbody').html("Loading node data from Chef server...");
 
-        $.ajax({
-            url: "vm/roster",
-            dataType: "json"
-        }).done(function (roster) {
 
-
-
-                console.log(roster);
+         var results = JSON.parse(roster.value);
 
                 $("#nodes_table").find('tbody').html("");
 
-                $(roster).each(function(index){
-
+                $(results).each(function(index){
 
 
                     row = $('<tr>')
 
                     row.append($('<td>').append("<div class='preview_small'></div>"));
-                    row.append($('<td>').append(roster[index].name));
-                    row.append($('<td>').append(roster[index].os));
-                    row.append($('<td>').append(roster[index].owner));
-                    row.append($('<td>').append(roster[index].ipAddress));
-                    row.append($('<td>').append(roster[index].hostType));
-                    row.append($('<td>').append(roster[index].description));
+                    row.append($('<td>').append(results[index].name));
+                    row.append($('<td>').append(results[index].os));
+                    row.append($('<td>').append(results[index].owner));
+                    row.append($('<td>').append(results[index].ipAddress));
+                    row.append($('<td>').append(results[index].hostType));
+                    row.append($('<td>').append(results[index].description));
 
 
                     $("#nodes_table").find('tbody').append(row);
 
                 });
          
-                setPreviewPicture(roster[0].ipAddress);
+                setPreviewPicture(results[0].ipAddress);
 
                 $("#nodes_table_body tr").click(function() {
 
@@ -104,45 +112,43 @@ $( document ).ready(function() {
 
                     console.log("Fetching stats...")
                     $("#stats_group_cpu_speed,#stats_group_cpu_cores,#stats_group_memory").html("Loading...")
-                    $.ajax({
-                        url: "vm/roster",
-                        dataType: "json"
-                    }).done(function(roster) {
 
-                            setPreviewPicture(roster[tableRow].ipAddress);
+
+                            setPreviewPicture(results[tableRow].ipAddress);
 
                             $("#stats_group_cpu_speed").html(function(){
-                                    var speed = roster[tableRow].cpuSpeed / 1000
+                                    var speed = results[tableRow].cpuSpeed / 1000
                                     return Math.round(speed * 10)/10+ "GHz"
                                 }
                             );
 
                             $("#stats_group_cpu_cores").html(
-                                roster[tableRow].cpuCores
+                                results[tableRow].cpuCores
                             );
 
                             $("#stats_group_memory").html(function(){
-                                    var ram = roster[tableRow].ram / (1024 * 1024);
+                                    var ram = results[tableRow].ram / (1024 * 1024);
                                     return Math.round(ram * 10)/10 + "GB"
                                 }
 
                             );
 
 
-                        });
+
 
                        
                 });
 
              
 
-            });
+
 
      
     };
 
-    populateTable();
-  
+    roster.clear();
+    roster.getRoster(false);
+
 
 });
 
