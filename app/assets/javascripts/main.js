@@ -131,7 +131,11 @@ $( document ).ready(function() {
 
             $("#stats_group_cpu_speed").html(function(){
                     var speed = results[tableRow].cpuSpeed / 1000
-                    return Math.round(speed * 10)/10+ "GHz"
+                    if(!isNaN(speed)){
+                        return Math.round(speed * 10)/10+ "GHz"
+                    }
+                    return "???Ghz"
+
                 }
             );
 
@@ -141,7 +145,10 @@ $( document ).ready(function() {
 
             $("#stats_group_memory").html(function(){
                     var ram = results[tableRow].ram / (1024 * 1024);
-                    return Math.round(ram * 10)/10 + "GB"
+                    if(!isNaN(ram)){
+                        return Math.round(ram * 10)/10 + "GB"
+                    }
+                    return "???GB"
                 }
 
             );
