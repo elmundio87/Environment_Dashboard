@@ -1,3 +1,12 @@
+// jQuery expression for case-insensitive filter
+$.extend($.expr[":"],
+    {
+        "contains-ci": function(elem, i, match, array)
+        {
+            return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+    });
+
 setPreviewPicture = function(ipAddress){
 
     if(ipAddress == "???"){
