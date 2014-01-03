@@ -5,7 +5,7 @@ setPreviewPicture = function(ipAddress){
     }
     else
     {
-        $("#preview").attr("src","");
+        $("#preview").attr("src","/vm/screenshot?ipAddress=" + ipAddress + "&req=" + (new Date).valueOf())
     }
 
 };
