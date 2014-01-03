@@ -12,9 +12,13 @@
 #preview{
 	width:100%;
 	cursor:pointer;
-	background-image: url("/assets/loading.jpeg");
 	background-position:center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/assets/loading.jpeg");
+    background-color:black;
 	min-height: 300px;
+    margin:10px;
 }
 
 #preview_container{
