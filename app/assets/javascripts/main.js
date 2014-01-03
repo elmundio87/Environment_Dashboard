@@ -106,9 +106,14 @@ $( document ).ready(function() {
 
         $("#nodes_table_body tr").click(function() {
 
+
+
             $("#preview").attr("src","")
 
             var tableRow = this.rowIndex - 1 ;
+
+            $("#nodes_table_body tr").removeClass("active");
+            $(this).addClass("active");
 
             console.log("Fetching stats...")
             $("#stats_group_cpu_speed,#stats_group_cpu_cores,#stats_group_memory").html("Loading...")
