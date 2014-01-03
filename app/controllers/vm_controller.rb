@@ -58,22 +58,21 @@ require 'RidleySingleton'
 
     def screenshot
 
+    require 'timeout'
 
        begin
            Timeout::timeout(5){
                 screenshot  = get_screenshot(params[:ipAddress])
                 send_data screenshot, :type => 'image/png'
            }
-         rescue Timeout::Error
-          redirect_to "/assets/offline.png"
+         rescue
+            redirect_to "/assets/offline.png"
          end
     end
 
  def get_screenshot(ip)
   
         require 'open-uri'
-         require 'timeout'
-
 
         open("http://#{ip}:8151/screenshot.png", :read_timeout => 5) do |file|
             return file.read

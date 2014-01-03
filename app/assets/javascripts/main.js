@@ -5,35 +5,10 @@ setPreviewPicture = function(ipAddress){
     }
     else
     {
-        $("#preview").attr("src","")
-
-    var imageTimer = setTimeout(function () {
-        //image could not be loaded:
-        $("#preview").attr("src","/assets/offline.png")
-    }, 5000); //5 seconds
-
-    $("#preview").load(function (response, status, xhr) {
-        if (status == 'error') {
-            //image could not be loaded:
-            alert('failed to load image');
-
-        } else {
-            //image was loaded:
-            clearTimeout(imageTimer);
-            $("#preview").attr("src","/vm/screenshot?ipAddress=" + ipAddress + "&req=" + (new Date).valueOf())
-        }
-    });
-
-
-
-        a = function(){}
-
-        setTimeout(a, 1000);
-
-        
+        $("#preview").attr("src","");
     }
 
-}
+};
 
 $("#search-vms").keyup(function() {
 	var rows = $("#table_container table").find("tr").hide();
@@ -44,19 +19,6 @@ $("#search-vms").keyup(function() {
 });
 
 $( document ).ready(function() {
-
- /*   var imageTimer = setTimeout(function () {
-        $("#preview").attr("src","/assets/offline.png")
-    }, 5000); //5 seconds
-
-    $("#preview").load(function (response, status, xhr) {
-        if (status == 'error') {
-            $("#preview").attr("src","/assets/offline.png")
-        } else {
-            clearTimeout(imageTimer);
-        }
-    });*/
-
 
     populateTable = function () {
         $("#nodes_table").find('tbody').html("Loading node data from Chef server...");
