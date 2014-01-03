@@ -20,7 +20,48 @@ $("#search-vms").keyup(function() {
 
 $( document ).ready(function() {
 
-    populateTable = function () {
+
+    roster = {};
+
+    roster.getRosterFromCache = function(){
+        return JSON.parse(localStorage.getItem("roster"));
+    };
+
+    roster.timeRemaining = function(){
+        return  roster.getRosterFromCache().timestamp - new Date().getTime() ;
+    };
+
+    roster.isExpired = function(){
+        var configuration = roster.getRosterFromCache();
+
+        if(!configuration){
+            return true;
+        }
+
+        return roster.timeRemaining() < 0;
+
+    };
+
+    roster.getRoster = function(){
+        var configuration = roster.getRosterFromCache();
+
+        if(roster.isExpired(configuration)){
+            $.ajax({
+                url: "vm/roster",
+                dataType: "json"
+            }).done(function(json) {
+                    var expirationMin = 5;
+                    var expirationMS = expirationMin * 60 * 1000;
+                    configuration = {value: JSON.stringify(json), timestamp: new Date().getTime() + expirationMS}
+                    localStorage.setItem("roster", JSON.stringify(configuration));
+                });
+        }
+
+        return configuration
+    };
+
+
+        populateTable = function () {
         $("#nodes_table").find('tbody').html("Loading node data from Chef server...");
 
         $.ajax({
