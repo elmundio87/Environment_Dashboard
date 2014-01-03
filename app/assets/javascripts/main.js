@@ -11,11 +11,11 @@ setPreviewPicture = function(ipAddress){
 };
 
 $("#search-vms").keyup(function() {
-	var rows = $("#table_container table").find("tr").hide();
-	var data = this.value.split(" ");
-	$.each(data, function(i, v) {
-		rows.filter(":contains('" + v + "')").show();
-	});
+    var rows = $("#table_container table").find("tr").hide();
+    var data = this.value.split(" ");
+    $.each(data, function(i, v) {
+        rows.filter(":contains('" + v + "')").show();
+    });
 });
 
 $( document ).ready(function() {
@@ -76,74 +76,74 @@ $( document ).ready(function() {
     };
 
 
-        populateTable = function (roster) {
+    populateTable = function (roster) {
         $("#nodes_table").find('tbody').html("Loading node data from Chef server...");
 
 
-         var results = JSON.parse(roster.value);
+        var results = JSON.parse(roster.value);
 
-                $("#nodes_table").find('tbody').html("");
+        $("#nodes_table").find('tbody').html("");
 
-                $(results).each(function(index){
-
-
-                    row = $('<tr>')
-
-                    row.append($('<td>').append("<div class='preview_small'></div>"));
-                    row.append($('<td>').append(results[index].name));
-                    row.append($('<td>').append(results[index].os));
-                    row.append($('<td>').append(results[index].owner));
-                    row.append($('<td>').append(results[index].ipAddress));
-                    row.append($('<td>').append(results[index].hostType));
-                    row.append($('<td>').append(results[index].description));
+        $(results).each(function(index){
 
 
-                    $("#nodes_table").find('tbody').append(row);
+            row = $('<tr>')
 
-                });
-         
-                setPreviewPicture(results[0].ipAddress);
-
-                $("#nodes_table_body tr").click(function() {
-
-                     $("#preview").attr("src","")
-
-                    var tableRow = this.rowIndex - 1 ;
-
-                    console.log("Fetching stats...")
-                    $("#stats_group_cpu_speed,#stats_group_cpu_cores,#stats_group_memory").html("Loading...")
+            row.append($('<td>').append("<div class='preview_small'></div>"));
+            row.append($('<td>').append(results[index].name));
+            row.append($('<td>').append(results[index].os));
+            row.append($('<td>').append(results[index].owner));
+            row.append($('<td>').append(results[index].ipAddress));
+            row.append($('<td>').append(results[index].hostType));
+            row.append($('<td>').append(results[index].description));
 
 
-                            setPreviewPicture(results[tableRow].ipAddress);
+            $("#nodes_table").find('tbody').append(row);
 
-                            $("#stats_group_cpu_speed").html(function(){
-                                    var speed = results[tableRow].cpuSpeed / 1000
-                                    return Math.round(speed * 10)/10+ "GHz"
-                                }
-                            );
+        });
 
-                            $("#stats_group_cpu_cores").html(
-                                results[tableRow].cpuCores
-                            );
+        setPreviewPicture(results[0].ipAddress);
 
-                            $("#stats_group_memory").html(function(){
-                                    var ram = results[tableRow].ram / (1024 * 1024);
-                                    return Math.round(ram * 10)/10 + "GB"
-                                }
+        $("#nodes_table_body tr").click(function() {
 
-                            );
+            $("#preview").attr("src","")
+
+            var tableRow = this.rowIndex - 1 ;
+
+            console.log("Fetching stats...")
+            $("#stats_group_cpu_speed,#stats_group_cpu_cores,#stats_group_memory").html("Loading...")
 
 
+            setPreviewPicture(results[tableRow].ipAddress);
 
+            $("#stats_group_cpu_speed").html(function(){
+                    var speed = results[tableRow].cpuSpeed / 1000
+                    return Math.round(speed * 10)/10+ "GHz"
+                }
+            );
 
-                       
-                });
+            $("#stats_group_cpu_cores").html(
+                results[tableRow].cpuCores
+            );
 
-             
+            $("#stats_group_memory").html(function(){
+                    var ram = results[tableRow].ram / (1024 * 1024);
+                    return Math.round(ram * 10)/10 + "GB"
+                }
+
+            );
 
 
 
-     
+
+
+        });
+
+
+
+
+
+
     };
 
     roster.clear();
