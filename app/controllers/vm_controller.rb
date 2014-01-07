@@ -3,6 +3,15 @@ class VmController < ApplicationController
 require 'ridley'
 require 'RidleySingleton'
 
+  def bootstrap
+
+  ridley = RidleySingleton.instance.getConnection();
+  result = ridley.node.bootstrap("192.168.0.114")
+
+    render :json => result
+
+  end
+
   def roster
 
      ridley = RidleySingleton.instance.getConnection();

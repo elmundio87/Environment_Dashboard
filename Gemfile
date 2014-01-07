@@ -45,7 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Use for chef API calls
-gem 'ridley'
+gem 'ridley', :github => "reset/ridley"
 
 #Multithreaded app server to handle concurrent requests
 gem 'thin'

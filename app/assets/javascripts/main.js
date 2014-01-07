@@ -10,7 +10,7 @@ $.extend($.expr[":"],
 setPreviewPicture = function(ipAddress){
 
     if(ipAddress == "???"){
-        $("#preview").attr("src","/assets/offline.png")
+        $("#preview").attr("src","/assets/offline.png?req=" + (new Date).valueOf());
     }
     else
     {

@@ -1,6 +1,8 @@
 EnvironmentManagerDashboard::Application.routes.draw do
   get "vm/screenshot"
   get "vm/roster"
+  get "vm/bootstrap"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
