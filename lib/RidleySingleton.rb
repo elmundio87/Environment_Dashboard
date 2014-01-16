@@ -4,9 +4,9 @@ require 'ridley'
 
   def initialize
     @ridley = Ridley.new(
-                    server_url: "https://api.opscode.com/organizations/elmundio87",
-                    client_name: "elmundio87-validator",
-                    client_key: "/Users/edmundd/.chef/elmundio87-validator.pem"
+                    server_url: Rails.application.config.chef_client_url,
+                    client_name: Rails.application.config.chef_client_name,
+                    client_key: Rails.application.config.chef_client_key
                   )
   end
 
