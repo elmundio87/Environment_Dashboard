@@ -78,18 +78,23 @@ $( document ).ready(function() {
         if(roster.isExpired()){
             $.ajax({
                 url: "vm/roster",
-                dataType: "json"
-            }).done(function(json) {
+                dataType: "json",
+                success: function(json) {
                     var expirationMin = 5;
                     var expirationMS = expirationMin * 60 * 1000;
                     configuration = {value: JSON.stringify(json), timestamp: new Date().getTime() + expirationMS}
                     localStorage.setItem("roster", JSON.stringify(configuration));
                     populateTable(roster.getRosterFromCache());
                     $.unblockUI();
-                });
-        }
+                },
+                error: function(){
+                    window.location=this.url;
+                }
+        });
 
         return configuration
+
+        }
     };
 
 
@@ -161,18 +166,7 @@ $( document ).ready(function() {
                 }
 
             );
-
-
-
-
-
         });
-
-
-
-
-
-
     };
 
     roster.clear();

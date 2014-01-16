@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58607860-79a0-4edf-9388-c698bcafe1df" name="Default" comment="added some ajax stuff, to pull info out via xml">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/main.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/vm_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/vm_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="8eacdb77-277c-4ea0-b6ab-635451510408" name="New changelist" comment="" />
@@ -32,7 +30,7 @@
       <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="25" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="460">
+            <state line="15" column="25" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="480">
               <folding />
             </state>
           </provider>
@@ -59,7 +57,7 @@
       <file leaf-file-name="vm_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/vm_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="28" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1780">
+            <state line="6" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1780">
               <folding />
             </state>
           </provider>
@@ -75,7 +73,7 @@
       <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="820">
+            <state line="3" column="0" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1020">
               <folding />
             </state>
           </provider>
@@ -84,7 +82,7 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="2" selection-start="194" selection-end="194" vertical-scroll-proportion="0.15463917" vertical-offset="80" max-vertical-offset="2260">
+            <state line="90" column="45" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.7640891" vertical-offset="1217" max-vertical-offset="3660">
               <folding />
             </state>
           </provider>
@@ -102,7 +100,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/dashboard/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="2660">
+            <state line="14" column="6" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2420">
               <folding />
             </state>
           </provider>
@@ -345,8 +343,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="FullScreen" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -358,6 +356,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -368,23 +374,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -452,7 +450,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="added some ajax stuff, to pull info out via xml" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/helpers/dashboard_helper.rb">
@@ -520,6 +520,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/images/offline.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="400">
@@ -529,26 +534,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="2660">
+        <state line="14" column="6" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2420">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/vm_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="28" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1780">
+        <state line="6" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1780">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/images/offline.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="2" selection-start="194" selection-end="194" vertical-scroll-proportion="0.15463917" vertical-offset="80" max-vertical-offset="2260">
+        <state line="90" column="45" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.7640891" vertical-offset="1217" max-vertical-offset="3660">
           <folding />
         </state>
       </provider>
