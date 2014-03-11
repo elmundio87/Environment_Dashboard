@@ -20,8 +20,9 @@ module EnvironmentManagerDashboard
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.chef_client_url = "https://api.opscode.com/organizations/elmundio87"
-    config.chef_client_name = "elmundio87-validator"
-    config.chef_client_key = "/Users/edmundd/.chef/elmundio87-validator.pem"
+    config.chef_client_url = "https://chef-app.fourth.cloud"
+    config.chef_client_name = "admin"
+    config.chef_client_key = "/Development/Lightyear/chef-repo/chef-config/admin.pem"
+    config.verify_ssl = false
   end
 end

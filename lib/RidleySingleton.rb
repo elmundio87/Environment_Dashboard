@@ -6,7 +6,8 @@ require 'ridley'
     @ridley = Ridley.new(
                     server_url: Rails.application.config.chef_client_url,
                     client_name: Rails.application.config.chef_client_name,
-                    client_key: Rails.application.config.chef_client_key
+                    client_key: Rails.application.config.chef_client_key,
+                    ssl: { verify: Rails.application.config.verify_ssl  }
                   )
   end
 
